@@ -14,10 +14,15 @@
         .form-section {
             background-color: white;
             border-radius: 0.5rem;
-            padding: 2rem;
+            padding: 1.25rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             border: 1px solid #f0e6d2;
+        }
+        @media (min-width: 640px) {
+            .form-section {
+                padding: 2rem;
+            }
         }
         .required::after {
             content: " *";
@@ -25,16 +30,16 @@
         }
     </style>
 </head>
-<body class="text-gray-800 antialiased py-8">
+<body class="text-gray-800 antialiased py-4 sm:py-8">
 
-<div class="max-w-3xl mx-auto px-4">
+<div class="max-w-3xl mx-auto px-4 sm:px-6">
     
     <!-- Header / Intro -->
     <div class="text-center mb-8">
         <img src="poster.jpg" alt="자격증 스터디 개미와 배짱이" class="max-w-full h-auto mx-auto rounded-lg shadow-md mb-6" style="max-height: 400px; object-fit: contain;">
-        <h1 class="text-3xl font-bold mb-3 text-amber-900">👩‍🏫 자격증 스터디 | 개미와 배짱이 🕺🏽</h1>
-        <p class="text-lg text-gray-600 mb-2">(서울 20대 대학생 · 대학원생 대상)</p>
-        <p class="text-gray-700 leading-relaxed mb-4">
+        <h1 class="text-2xl sm:text-3xl font-bold mb-3 text-amber-900">👩‍🏫 자격증 스터디 | 개미와 배짱이 🕺🏽</h1>
+        <p class="text-base sm:text-lg text-gray-600 mb-2">(서울 20대 대학생 · 대학원생 대상)</p>
+        <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
             혼자 공부할 때보다 사람들과 같이 할 때 능률 오르시는 분들 환영합니다!<br>
             방학 동안 자격증 하나도 못 딴 사람... 지금이 기회입니다.<br>
             자격증도 따면서 새로운 사람들 알아가보고 싶은 분들, 올해 뭐라도 따봐야겠다 싶은 분들 함께 해요🫶🏻💪🏻
