@@ -67,11 +67,11 @@
     // Simple password prompt for basic protection
     const checkAuth = () => {
         const pwd = sessionStorage.getItem('admin_pwd');
-        if (pwd === 'ant1234') return true;
+        if (pwd === '00347') return true;
         
         const input = prompt("관리자 비밀번호를 입력해주세요.");
-        if (input === 'ant1234') {
-            sessionStorage.setItem('admin_pwd', 'ant1234');
+        if (input === '00347') {
+            sessionStorage.setItem('admin_pwd', '00347');
             return true;
         }
         alert("비밀번호가 틀렸습니다.");
