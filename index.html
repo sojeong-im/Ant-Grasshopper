@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개미와 배짱이 스터디 지원서</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfaf6; /* Light warm background matching the poster */
+        }
+        .form-section {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f0e6d2;
+        }
+        .required::after {
+            content: " *";
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased py-8">
+
+<div class="max-w-3xl mx-auto px-4">
+    
+    <!-- Header / Intro -->
+    <div class="text-center mb-8">
+        <img src="poster.jpg" alt="자격증 스터디 개미와 배짱이" class="max-w-full h-auto mx-auto rounded-lg shadow-md mb-6" style="max-height: 400px; object-fit: contain;">
+        <h1 class="text-3xl font-bold mb-3 text-amber-900">👩‍🏫 자격증 스터디 | 개미와 배짱이 🕺🏽</h1>
+        <p class="text-lg text-gray-600 mb-2">(서울 20대 대학생 · 대학원생 대상)</p>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            혼자 공부할 때보다 사람들과 같이 할 때 능률 오르시는 분들 환영합니다!<br>
+            방학 동안 자격증 하나도 못 딴 사람... 지금이 기회입니다.<br>
+            자격증도 따면서 새로운 사람들 알아가보고 싶은 분들, 올해 뭐라도 따봐야겠다 싶은 분들 함께 해요🫶🏻💪🏻
+        </p>
+        <p class="text-sm text-gray-500 bg-amber-50 inline-block px-4 py-2 rounded-full border border-amber-200">
+            🚨개미와 배짱이는 종교, 시민 단체와 무관합니다.
+        </p>
+    </div>
+
+    <form action="#" method="POST" class="space-y-6">
+
+        <!-- 1. 기본 정보 -->
+        <div class="form-section">
+            <h2 class="text-xl font-bold mb-4 text-amber-800 border-b pb-2">1. 기본 정보</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 required">이름</label>
+                    <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 required">나이</label>
+                    <input type="number" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 required">성별</label>
+                    <div class="flex gap-4 mt-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="gender" value="여성" required class="text-amber-600 focus:ring-amber-500">
+                            <span class="ml-2">여성</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="gender" value="남성" required class="text-amber-600 focus:ring-amber-500">
+                            <span class="ml-2">남성</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 required">MBTI</label>
+                    <input type="text" required placeholder="예: ENFP" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 required">학교</label>
+                    <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 required">학과(전공)</label>
+                    <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 required">학년</label>
+                    <select required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white">
+                        <option value="">선택해주세요</option>
+                        <option value="1학년">1학년</option>
+                        <option value="2학년">2학년</option>
+                        <option value="3학년">3학년</option>
+                        <option value="4학년">4학년</option>
+                        <option value="졸업유예">졸업유예</option>
+                        <option value="대학원">대학원</option>
+                        <option value="기타">기타</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1 required">주 활동 지역</label>
+                <p class="text-xs text-gray-500 mb-2">다 같이 만나서 공부하는 만큼 스터디 장소와 조 편성을 맞추기 위해 평소 활동하는 지역을 알려주세요! (예: 서울대입구역 / 신촌역 / 홍대역 등)</p>
+                <input type="text" required placeholder="주로 이동하기 편한 지역이나 역" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+            </div>
+
+            <div class="mb-2">
+                <label class="block text-sm font-medium text-gray-700 mb-1 required">전화번호</label>
+                <p class="text-xs text-gray-500 mb-2">원활한 일정 조율 및 면접 안내를 위해 실제로 연락 가능한 번호를 입력해주세요. 📞 (면접 안내 외 목적으로 사용되지 않습니다)</p>
+                <input type="tel" required placeholder="010-0000-0000" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+            </div>
+        </div>
+
+        <!-- 2. 활동 정보 -->
+        <div class="form-section">
+            <h2 class="text-xl font-bold mb-4 text-amber-800 border-b pb-2">2. 📚 지금 무엇을 하고 계신가요?</h2>
+            
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2 required">Q. 현재 하고 있거나 앞으로 하고 싶은 활동을 모두 골라주세요.</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">자격증 공부</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">어학 공부 (TOEIC, OPIc, JLPT 등)</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">대학 전공 공부</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">대학 과제</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">시험 / 중간·기말고사 준비</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">취업 / 인턴 준비</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">공모전 / 대외활동 준비</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">포트폴리오 제작</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">코딩 / 개발 공부</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">독서</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">운동 / 체력 관리</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500"><span class="ml-2">새로운 취미 만들기</span></label>
+                    <label class="inline-flex items-center col-span-1 sm:col-span-2">
+                        <input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500">
+                        <span class="ml-2 whitespace-nowrap">기타:</span>
+                        <input type="text" class="ml-2 border-b border-gray-400 focus:border-amber-500 focus:outline-none w-full max-w-xs px-1 text-sm bg-transparent">
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2 required">Q. 이번 스터디에서 가장 집중하고 싶은 것은? (1순위를 골라주세요)</label>
+                <div class="flex flex-col gap-2 text-sm">
+                    <label class="inline-flex items-center"><input type="radio" name="focus" required class="text-amber-600 focus:ring-amber-500"><span class="ml-2">자격증 취득</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="focus" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">어학 점수 만들기</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="focus" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">대학 공부 / 과제</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="focus" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">취업 준비</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="focus" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">자기계발</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="focus" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">개인 프로젝트</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="focus" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">생활 습관 / 공부 습관 만들기</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="focus" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">아직 정하지 못했지만 일단 같이 공부하고 싶다</span></label>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Q. 자격증일 경우 이름과 목표 시험일이 있다면 적어주세요.</label>
+                <p class="text-xs text-gray-500 mb-2">예: 9월 중 / 10월 TOEIC / 아직 미정</p>
+                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+            </div>
+        </div>
+
+        <!-- 3. 반 선택 -->
+        <div class="form-section bg-amber-50/50">
+            <h2 class="text-xl font-bold mb-4 text-amber-800 border-b border-amber-200 pb-2">3. 개미반 vs 배짱이반 질문</h2>
+            <p class="text-sm text-gray-600 mb-4">* 조 배정용으로 사용됩니다.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-lg mb-2 flex items-center">🐜 개미</h3>
+                    <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                        <li>계획표를 짜야 마음이 편하다.</li>
+                        <li>오늘 할 일을 못 하면 괜히 찝찝하다.</li>
+                        <li>누가 관리해주면 오히려 불타오른다.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-lg mb-2 flex items-center">🕺 배짱이</h3>
+                    <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                        <li>계획은 거창하지만 실행은 유동적이다.</li>
+                        <li>너무 빡세면 금방 지친다.</li>
+                        <li>꾸준히 할 수 있는 분위기가 중요하다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1 required">Q. 당신의 공부 스타일은 어디에 더 가까운가요?</label>
+                <p class="text-xs text-gray-500 mb-2">예: 70% 개미 + 30% 배짱이</p>
+                <input type="text" required placeholder="비율이나 성향을 자유롭게 적어주세요" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+            </div>
+        </div>
+
+        <!-- 4. 스터디 참여 관련 -->
+        <div class="form-section">
+            <h2 class="text-xl font-bold mb-4 text-amber-800 border-b pb-2">4. 스터디 참여 관련</h2>
+            
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2 required">Q. 일주일에 어느 정도 참여할 수 있나요?</label>
+                <div class="flex flex-col gap-2 text-sm">
+                    <label class="inline-flex items-center"><input type="radio" name="frequency" required class="text-amber-600 focus:ring-amber-500"><span class="ml-2">주 1회</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="frequency" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">주 2회</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="frequency" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">주 3회</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="frequency" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">그 이상도 가능</span></label>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2 required">Q. 주로 가능한 시간대는?</label>
+                <div class="flex flex-col gap-2 text-sm">
+                    <label class="inline-flex items-center"><input type="radio" name="time" required class="text-amber-600 focus:ring-amber-500"><span class="ml-2">평일 19~21시</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="time" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">평일 20시 이후</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="time" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">주말</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="time" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">평일/주말 상관없이 조율 가능</span></label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="time" class="text-amber-600 focus:ring-amber-500">
+                        <span class="ml-2 whitespace-nowrap">기타:</span>
+                        <input type="text" class="ml-2 border-b border-gray-400 focus:border-amber-500 focus:outline-none px-1 text-sm bg-transparent">
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2 required">Q. 스터디에서 가장 기대하는 것은? (최대 3개 선택)</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500 max-3-check"><span class="ml-2">자격증 합격</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500 max-3-check"><span class="ml-2">공부 습관 만들기</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500 max-3-check"><span class="ml-2">강제성(?) 부여</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500 max-3-check"><span class="ml-2">새로운 사람 만나기</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500 max-3-check"><span class="ml-2">정보 공유</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500 max-3-check"><span class="ml-2">같이 카페에서 공부하기</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500 max-3-check"><span class="ml-2">시험 같이 보러 가기</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500 max-3-check"><span class="ml-2">맛있는 거 먹기</span></label>
+                    <label class="inline-flex items-center"><input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500 max-3-check"><span class="ml-2">공부 핑계로 밖에 나오기</span></label>
+                    <label class="inline-flex items-center col-span-1 sm:col-span-2">
+                        <input type="checkbox" class="rounded text-amber-600 focus:ring-amber-500 max-3-check">
+                        <span class="ml-2 whitespace-nowrap">기타:</span>
+                        <input type="text" class="ml-2 border-b border-gray-400 focus:border-amber-500 focus:outline-none w-full max-w-xs px-1 text-sm bg-transparent">
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2 required">Q. 만약 당신이 자격증 공부를 끝까지 미루고 있다면, 운영진은 어떻게 해야 할까요?</label>
+                <div class="flex flex-col gap-2 text-sm">
+                    <label class="inline-flex items-center"><input type="radio" name="punishment" required class="text-amber-600 focus:ring-amber-500"><span class="ml-2">"공부하셨나요?"라고 연락해 주세요</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="punishment" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">공부 인증을 요구해주세요</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="punishment" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">조용히 옆에서 같이 공부해주세요</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="punishment" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">맛있는 걸 사주면서 꼬셔주세요</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="punishment" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">약간의 압박이 필요합니다.</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="punishment" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">포기하지 말라고 응원해주세요</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="punishment" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">그냥 저를 카페에 데려가 주세요.</span></label>
+                    <label class="inline-flex items-center"><input type="radio" name="punishment" class="text-amber-600 focus:ring-amber-500"><span class="ml-2">제가 알아서 할 테니 믿어주세요.</span></label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="punishment" class="text-amber-600 focus:ring-amber-500">
+                        <span class="ml-2 whitespace-nowrap">기타:</span>
+                        <input type="text" class="ml-2 border-b border-gray-400 focus:border-amber-500 focus:outline-none px-1 text-sm bg-transparent">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center pb-8 mt-8">
+            <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-12 rounded-full shadow-lg transition duration-200 transform hover:-translate-y-1 text-lg">
+                지원서 제출하기
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Max 3 checkboxes logic for "기대하는 것"
+    const checkboxes = document.querySelectorAll('.max-3-check');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const checkedCount = document.querySelectorAll('.max-3-check:checked').length;
+            if (checkedCount > 3) {
+                this.checked = false;
+                alert('최대 3개까지만 선택할 수 있습니다.');
+            }
+        });
+    });
+</script>
+</body>
+</html>
