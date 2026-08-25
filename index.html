@@ -321,23 +321,53 @@
                 </div>
 
                 <div>
-                    <label class="block text-base font-semibold text-gray-800 mb-4 required">Q. 주로 가능한 시간대는?</label>
+                    <label class="block text-base font-semibold text-gray-800 mb-4 required">Q. 주로 가능한 요일 및 시간대</label>
+                    
+                    <p class="text-sm text-gray-600 mb-2 font-medium">가능한 요일 (다중 선택)</p>
+                    <div class="flex gap-2 mb-5">
+                        <label class="flex-1 text-center p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
+                            <input type="checkbox" name="days" value="월" class="sr-only">
+                            <span class="text-sm font-medium text-gray-600 group-has-[:checked]:font-bold group-has-[:checked]:text-amber-800">월</span>
+                        </label>
+                        <label class="flex-1 text-center p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
+                            <input type="checkbox" name="days" value="화" class="sr-only">
+                            <span class="text-sm font-medium text-gray-600 group-has-[:checked]:font-bold group-has-[:checked]:text-amber-800">화</span>
+                        </label>
+                        <label class="flex-1 text-center p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
+                            <input type="checkbox" name="days" value="수" class="sr-only">
+                            <span class="text-sm font-medium text-gray-600 group-has-[:checked]:font-bold group-has-[:checked]:text-amber-800">수</span>
+                        </label>
+                        <label class="flex-1 text-center p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
+                            <input type="checkbox" name="days" value="목" class="sr-only">
+                            <span class="text-sm font-medium text-gray-600 group-has-[:checked]:font-bold group-has-[:checked]:text-amber-800">목</span>
+                        </label>
+                        <label class="flex-1 text-center p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
+                            <input type="checkbox" name="days" value="금" class="sr-only">
+                            <span class="text-sm font-medium text-gray-600 group-has-[:checked]:font-bold group-has-[:checked]:text-amber-800">금</span>
+                        </label>
+                        <label class="flex-1 text-center p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
+                            <input type="checkbox" name="days" value="토" class="sr-only">
+                            <span class="text-sm font-medium text-gray-600 group-has-[:checked]:font-bold group-has-[:checked]:text-amber-800">토</span>
+                        </label>
+                        <label class="flex-1 text-center p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
+                            <input type="checkbox" name="days" value="일" class="sr-only">
+                            <span class="text-sm font-medium text-gray-600 group-has-[:checked]:font-bold group-has-[:checked]:text-amber-800">일</span>
+                        </label>
+                    </div>
+
+                    <p class="text-sm text-gray-600 mb-2 font-medium">시간대</p>
                     <div class="flex flex-col gap-3">
                         <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
                             <input type="radio" name="time" required class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
-                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">평일 19~21시</span>
+                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">낮 시간대</span>
                         </label>
                         <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
                             <input type="radio" name="time" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
-                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">평일 20시 이후</span>
+                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">저녁 시간대</span>
                         </label>
                         <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
                             <input type="radio" name="time" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
-                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">주말 위주</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                            <input type="radio" name="time" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
-                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">평일/주말 상관없이 조율 가능</span>
+                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">상관 없음 (조율 가능)</span>
                         </label>
                     </div>
                 </div>
