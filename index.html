@@ -28,7 +28,6 @@
             content: " *";
             color: #ef4444;
         }
-        /* Custom scrollbar for textareas/inputs */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -67,10 +66,9 @@
             방학 동안 자격증 하나도 못 딴 사람... 지금이 기회입니다.<br>
             자격증도 따면서 새로운 사람들 알아가보고 싶은 분들, <br class="hidden sm:block">올해 뭐라도 따봐야겠다 싶은 분들 함께 해요🫶🏻💪🏻
         </p>
-
     </div>
 
-    <form action="#" method="POST" class="space-y-8">
+    <form id="application-form" class="space-y-8">
 
         <!-- 1. 기본 정보 -->
         <div class="form-section relative overflow-hidden">
@@ -83,11 +81,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2 required">이름</label>
-                    <input type="text" required placeholder="홍길동" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
+                    <input type="text" name="name" required placeholder="홍길동" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2 required">나이</label>
-                    <input type="number" required placeholder="예: 23" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
+                    <input type="number" name="age" required placeholder="예: 23" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2 required">성별</label>
@@ -104,22 +102,22 @@
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2 required">MBTI</label>
-                    <input type="text" required placeholder="예: ENFP" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
+                    <input type="text" name="mbti" required placeholder="예: ENFP" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2 required">학교</label>
-                    <input type="text" required placeholder="한국대학교" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
+                    <input type="text" name="school" required placeholder="한국대학교" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2 required">학과(전공)</label>
-                    <input type="text" required placeholder="경영학과" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
+                    <input type="text" name="major" required placeholder="경영학과" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2 required">학년</label>
-                    <select required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm appearance-none">
+                    <select name="grade" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm appearance-none">
                         <option value="" disabled selected>선택해주세요</option>
                         <option value="1학년">1학년</option>
                         <option value="2학년">2학년</option>
@@ -135,13 +133,13 @@
             <div class="mb-6">
                 <label class="block text-sm font-semibold text-gray-700 mb-1 required">주 활동 지역</label>
                 <p class="text-xs text-gray-500 mb-3 ml-1 break-keep">조 편성을 위해 평소 활동하는 지역을 알려주세요! (예: 서울대입구역 / 신촌역 / 홍대역 등)</p>
-                <input type="text" required placeholder="주로 이동하기 편한 지역이나 역" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
+                <input type="text" name="location" required placeholder="주로 이동하기 편한 지역이나 역" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
             </div>
 
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1 required">전화번호</label>
                 <p class="text-xs text-gray-500 mb-3 ml-1 break-keep">면접 안내를 위해 폰 번호를 입력해주세요. 📞 (안내 외 목적으로 사용되지 않습니다)</p>
-                <input type="tel" required placeholder="010-0000-0000" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
+                <input type="tel" name="phone" required placeholder="010-0000-0000" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
             </div>
         </div>
 
@@ -156,51 +154,50 @@
             <div class="mb-8">
                 <label class="block text-base font-semibold text-gray-800 mb-4 required">Q. 현재 하고 있거나 앞으로 하고 싶은 활동을 모두 골라주세요.</label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <!-- Checkbox Item Template -->
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="activities" value="자격증 공부" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">자격증 공부</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="activities" value="어학 공부 (TOEIC, OPIc, JLPT 등)" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">어학 공부 (TOEIC, OPIc, JLPT 등)</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="activities" value="대학 전공 공부" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">대학 전공 공부</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="activities" value="대학 과제" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">대학 과제</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="activities" value="시험 / 중간·기말고사 준비" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">시험 / 중간·기말고사 준비</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="activities" value="취업 / 인턴 준비" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">취업 / 인턴 준비</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="activities" value="공모전 / 대외활동 준비" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">공모전 / 대외활동 준비</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="activities" value="포트폴리오 제작" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">포트폴리오 제작</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="activities" value="코딩 / 개발 공부" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">코딩 / 개발 공부</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="activities" value="독서 / 체력 관리 / 새로운 취미" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">독서 / 체력 관리 / 새로운 취미</span>
                     </label>
                     <div class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-all focus-within:border-amber-500 focus-within:bg-amber-50 sm:col-span-2 group has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-                        <input type="checkbox" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 flex-shrink-0 cursor-pointer">
+                        <input type="checkbox" name="activities" value="기타" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 flex-shrink-0 cursor-pointer">
                         <span class="ml-3 text-sm text-gray-700 whitespace-nowrap group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">기타:</span>
-                        <input type="text" placeholder="직접 입력" class="ml-2 bg-transparent border-b border-gray-300 focus:border-amber-500 focus:outline-none w-full px-2 py-1 text-sm text-amber-900 placeholder-gray-400">
+                        <input type="text" name="activities_etc" placeholder="직접 입력" class="ml-2 bg-transparent border-b border-gray-300 focus:border-amber-500 focus:outline-none w-full px-2 py-1 text-sm text-amber-900 placeholder-gray-400">
                     </div>
                 </div>
             </div>
@@ -209,31 +206,31 @@
                 <label class="block text-base font-semibold text-gray-800 mb-4 required">Q. 이번 스터디에서 가장 집중하고 싶은 것은? (1순위)</label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="focus" required class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="focus" value="자격증 취득" required class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">자격증 취득</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="focus" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="focus" value="어학 점수 만들기" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">어학 점수 만들기</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="focus" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="focus" value="대학 공부 / 과제" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">대학 공부 / 과제</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="focus" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="focus" value="취업 준비" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">취업 준비</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="focus" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="focus" value="자기계발 / 개인 프로젝트" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">자기계발 / 개인 프로젝트</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="focus" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="focus" value="생활 습관 / 공부 습관 만들기" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">생활 습관 / 공부 습관 만들기</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 sm:col-span-2 group">
-                        <input type="radio" name="focus" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="focus" value="아직 정하지 못했지만 일단 같이 공부하고 싶다" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">아직 정하지 못했지만 일단 같이 공부하고 싶다</span>
                     </label>
                 </div>
@@ -242,7 +239,7 @@
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1">Q. 자격증일 경우 이름과 목표 시험일이 있다면 적어주세요.</label>
                 <p class="text-xs text-gray-500 mb-3 ml-1">예: 9월 중 / 10월 TOEIC / 아직 미정</p>
-                <input type="text" placeholder="자유롭게 기입해주세요" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
+                <input type="text" name="target_exam" placeholder="자유롭게 기입해주세요" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-sm">
             </div>
         </div>
 
@@ -285,7 +282,7 @@
             <div>
                 <label class="block text-base font-semibold text-gray-800 mb-1 required">Q. 당신의 공부 스타일은 어디에 더 가까운가요?</label>
                 <p class="text-xs text-gray-500 mb-3 ml-1">예: 70% 개미 + 30% 배짱이</p>
-                <input type="text" required placeholder="비율이나 본인의 성향을 자유롭게 적어주세요" class="w-full px-4 py-3 bg-white border border-amber-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all shadow-inner">
+                <input type="text" name="study_style" required placeholder="비율이나 본인의 성향을 자유롭게 적어주세요" class="w-full px-4 py-3 bg-white border border-amber-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all shadow-inner">
             </div>
         </div>
 
@@ -298,28 +295,6 @@
             </h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div>
-                    <label class="block text-base font-semibold text-gray-800 mb-4 required">Q. 주 몇 회 참여 가능하신가요?</label>
-                    <div class="flex flex-col gap-3">
-                        <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                            <input type="radio" name="frequency" required class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
-                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">주 1회</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                            <input type="radio" name="frequency" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
-                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">주 2회</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                            <input type="radio" name="frequency" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
-                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">주 3회</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                            <input type="radio" name="frequency" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
-                            <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">그 이상도 가능!</span>
-                        </label>
-                    </div>
-                </div>
-
                 <div>
                     <label class="block text-base font-semibold text-gray-800 mb-4 required">Q. 주로 가능한 요일 및 시간대</label>
                     
@@ -358,15 +333,15 @@
                     <p class="text-sm text-gray-600 mb-2 font-medium">시간대</p>
                     <div class="flex flex-col gap-3">
                         <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                            <input type="radio" name="time" required class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                            <input type="radio" name="time" value="낮 시간대" required class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                             <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">낮 시간대</span>
                         </label>
                         <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                            <input type="radio" name="time" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                            <input type="radio" name="time" value="저녁 시간대" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                             <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">저녁 시간대</span>
                         </label>
                         <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                            <input type="radio" name="time" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                            <input type="radio" name="time" value="상관 없음 (조율 가능)" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                             <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">상관 없음 (조율 가능)</span>
                         </label>
                     </div>
@@ -377,35 +352,35 @@
                 <label class="block text-base font-semibold text-gray-800 mb-4 required">Q. 스터디에서 가장 기대하는 것은? (최대 3개)</label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="expectations" value="자격증 합격" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">자격증 합격</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="expectations" value="규칙적인 공부 습관" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">규칙적인 공부 습관</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="expectations" value="강제성 부여" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">강제성 부여</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="expectations" value="새로운 사람 만나기" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">새로운 사람 만나기</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="expectations" value="알짜 정보 공유" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">알짜 정보 공유</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="expectations" value="다 같이 카페 공부" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">다 같이 카페 공부</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="expectations" value="스터디 후 맛집 탐방" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">스터디 후 맛집 탐방</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="checkbox" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
+                        <input type="checkbox" name="expectations" value="공부 핑계로 집 탈출" class="max-3-check w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">공부 핑계로 집 탈출</span>
                     </label>
                 </div>
@@ -415,35 +390,35 @@
                 <label class="block text-base font-semibold text-gray-800 mb-4 required">Q. 공부를 끝까지 미루고 있다면, 운영진이 어떻게 해드리면 좋을까요?</label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="punishment" required class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="punishment" value="연락 톡톡" required class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">"공부하셨나요?" 연락 톡톡</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="punishment" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="punishment" value="공부 인증 요구" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">무자비한 공부 인증 요구</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="punishment" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="punishment" value="옆에 앉아 같이 하기" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">조용히 옆에 앉아 같이 하기</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="punishment" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="punishment" value="맛있는 걸로 꼬셔내기" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">맛있는 걸로 꼬셔내기</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="punishment" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="punishment" value="정신 차릴 약간의 압박" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">정신 차릴 약간의 압박</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="punishment" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="punishment" value="따뜻한 응원" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">포기하지 말라고 따뜻한 응원</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="punishment" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="punishment" value="멱살 잡고 카페 가기" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">그냥 멱살 잡고 카페 가기</span>
                     </label>
                     <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-all has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 group">
-                        <input type="radio" name="punishment" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
+                        <input type="radio" name="punishment" value="믿어주세요" class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 focus:ring-amber-500">
                         <span class="ml-3 text-sm text-gray-700 group-has-[:checked]:font-semibold group-has-[:checked]:text-amber-900">제가 알아서 할 테니 믿어주세요</span>
                     </label>
                 </div>
@@ -452,8 +427,8 @@
 
         <!-- Submit Button -->
         <div class="text-center pb-12 mt-10">
-            <button type="submit" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-4 px-14 rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl text-lg flex items-center justify-center mx-auto">
-                지원서 제출하기
+            <button id="submit-btn" type="submit" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-4 px-14 rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl text-lg flex items-center justify-center mx-auto disabled:opacity-70 disabled:cursor-not-allowed">
+                <span>지원서 제출하기</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
@@ -473,6 +448,91 @@
                 alert('최대 3개까지만 선택할 수 있습니다.');
             }
         });
+    });
+</script>
+
+<script type="module">
+    // Import Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // Firebase configuration provided by user
+    const firebaseConfig = {
+      apiKey: "AIzaSyA6uX26PSzrT8WEtG-DD1-6ndTD6onyR5g",
+      authDomain: "ant-grasshopper.firebaseapp.com",
+      projectId: "ant-grasshopper",
+      storageBucket: "ant-grasshopper.firebasestorage.app",
+      messagingSenderId: "556183075964",
+      appId: "1:556183075964:web:ec339d82b43a83f7369df9",
+      measurementId: "G-G82EBK3J62"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById('application-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Show loading state
+        const originalBtnHTML = submitBtn.innerHTML;
+        submitBtn.innerHTML = '제출 중... ⏳';
+        submitBtn.disabled = true;
+
+        try {
+            // Collect Form Data securely
+            const formData = new FormData(form);
+            
+            // Basic inputs extraction
+            const data = {
+                name: formData.get('name'),
+                age: formData.get('age'),
+                gender: formData.get('gender'),
+                mbti: formData.get('mbti'),
+                school: formData.get('school'),
+                major: formData.get('major'),
+                grade: formData.get('grade'),
+                location: formData.get('location'),
+                phone: formData.get('phone'),
+                
+                // For activities, handle the "기타" text input
+                activities: formData.getAll('activities').map(act => {
+                    return act === '기타' ? `기타: ${formData.get('activities_etc')}` : act;
+                }),
+                
+                focus: formData.get('focus'),
+                target_exam: formData.get('target_exam'),
+                study_style: formData.get('study_style'),
+                
+                // Days array
+                days: formData.getAll('days'),
+                time: formData.get('time'),
+                
+                // Expectations array
+                expectations: formData.getAll('expectations'),
+                
+                punishment: formData.get('punishment'),
+                
+                submittedAt: serverTimestamp()
+            };
+
+            // Add document to "applications" collection
+            await addDoc(collection(db, "applications"), data);
+            
+            alert('지원서가 성공적으로 제출되었습니다! 🎉\n운영진이 확인 후 연락드리겠습니다.');
+            form.reset();
+            
+        } catch (error) {
+            console.error("Error adding document: ", error);
+            alert('앗! 제출 중 오류가 발생했습니다. 네트워크 상태를 확인하시거나 다시 시도해주세요.');
+        } finally {
+            // Restore button
+            submitBtn.innerHTML = originalBtnHTML;
+            submitBtn.disabled = false;
+        }
     });
 </script>
 </body>
