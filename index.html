@@ -5,24 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>개미와 배짱이 스터디 지원서</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #fdfaf6;
-        }
-        .form-section {
-            background-color: white;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-            border: 1px solid #f4ebd8;
-        }
+        
+        
         @media (min-width: 640px) {
-            .form-section {
-                padding: 2.5rem;
-            }
+            
         }
         .required::after {
             content: " *";
@@ -50,6 +38,90 @@
             width: 0 !important;
             height: 0 !important;
         }
+    
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfaf6;
+            background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M20 20.5V18H0v-2h20v-2.5L35 20z" fill="%23f4ebd8" fill-opacity="0.3" fill-rule="evenodd"/></svg>');
+        }
+        .jua-font {
+            font-family: 'Jua', sans-serif;
+        }
+        .form-section {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 2px dashed #f0d5a3;
+            position: relative;
+        }
+        @media (min-width: 640px) {
+            .form-section {
+                padding: 2.5rem;
+            }
+        }
+        .marching-ants {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background-image: repeating-linear-gradient(to right, transparent, transparent 10px, #8b4513 10px, #8b4513 15px);
+            background-size: 30px 100%;
+            animation: march 2s linear infinite;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            opacity: 0.8;
+        }
+        .grasshopper-top {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background-color: #4ade80;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            opacity: 0.8;
+        }
+        @keyframes march {
+            from { background-position: 0 0; }
+            to { background-position: -30px 0; }
+        }
+        .ant-card {
+            background-color: #fffaf0;
+            border: 2px solid #fbd38d;
+            transition: all 0.3s ease;
+        }
+        .ant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(217, 119, 6, 0.2);
+            border-color: #f59e0b;
+        }
+        .grasshopper-card {
+            background-color: #f0fff4;
+            border: 2px solid #9ae6b4;
+            transition: all 0.3s ease;
+        }
+        .grasshopper-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(56, 161, 105, 0.2);
+            border-color: #4ade80;
+        }
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(10deg); }
+        }
+        .ant-anim {
+            animation: antWalk 0.5s infinite alternate;
+            display: inline-block;
+        }
+        @keyframes antWalk {
+            0% { transform: translateY(0) rotate(-10deg); }
+            100% { transform: translateY(-4px) rotate(10deg); }
+        }
+
     </style>
 </head>
 <body class="text-gray-800 antialiased py-6 sm:py-10">
@@ -59,8 +131,8 @@
     <!-- Header / Intro -->
     <div class="text-center mb-10">
         <img src="poster.jpg" alt="자격증 스터디 개미와 배짱이" class="max-w-full h-auto mx-auto rounded-xl shadow-md mb-6 border-4 border-white" style="max-height: 400px; object-fit: contain;">
-        <h1 class="text-2xl sm:text-3xl font-bold mb-3 text-amber-900 tracking-tight">👩‍🏫 자격증 스터디 | 개미와 배짱이 🕺🏽</h1>
-        <p class="text-base sm:text-lg text-amber-700 font-medium mb-4">(서울 20대 대학생 · 대학원생 대상)</p>
+        <h1 class="text-3xl sm:text-4xl mb-3 text-amber-900 tracking-tight jua-font"><span class="ant-anim text-4xl mr-2">🐜</span> 자격증 스터디 | 개미와 배짱이 <span class="float-anim text-4xl ml-2">🎻</span></h1>
+        <p class="text-base sm:text-lg text-amber-800 font-medium mb-4 bg-amber-100 inline-block px-4 py-1 rounded-full">(서울 20대 대학생 · 대학원생 대상)</p>
         <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-5 max-w-xl mx-auto break-keep">
             혼자 공부할 때보다 사람들과 같이 할 때 능률 오르시는 분들 환영합니다!<br>
             방학 동안 자격증 하나도 못 딴 사람... 지금이 기회입니다.<br>
@@ -72,9 +144,9 @@
 
         <!-- 1. 기본 정보 -->
         <div class="form-section relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-amber-400"></div>
-            <h2 class="text-xl font-bold mb-6 text-amber-900 flex items-center">
-                <span class="bg-amber-100 text-amber-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">1</span>
+            <div class="marching-ants"></div>
+            <h2 class="text-xl font-bold mb-6 text-amber-900 flex items-center jua-font text-2xl">
+                <span class="bg-amber-200 text-amber-900 rounded-full w-10 h-10 shadow-sm flex items-center justify-center mr-3 text-sm">1</span>
                 기본 정보
             </h2>
             
@@ -145,9 +217,9 @@
 
         <!-- 2. 활동 정보 -->
         <div class="form-section relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-amber-400"></div>
-            <h2 class="text-xl font-bold mb-6 text-amber-900 flex items-center">
-                <span class="bg-amber-100 text-amber-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">2</span>
+            <div class="marching-ants"></div>
+            <h2 class="text-xl font-bold mb-6 text-amber-900 flex items-center jua-font text-2xl">
+                <span class="bg-amber-200 text-amber-900 rounded-full w-10 h-10 shadow-sm flex items-center justify-center mr-3 text-sm">2</span>
                 📚 지금 무엇을 하고 계신가요?
             </h2>
             
@@ -245,17 +317,17 @@
 
         <!-- 3. 반 선택 -->
         <div class="form-section relative overflow-hidden bg-[#faf8f4]">
-            <div class="absolute top-0 left-0 w-full h-1 bg-amber-500"></div>
-            <h2 class="text-xl font-bold mb-2 text-amber-900 flex items-center">
-                <span class="bg-amber-200 text-amber-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">3</span>
-                개미반 vs 배짱이반
+            <div class="grasshopper-top"></div>
+            <h2 class="text-xl font-bold mb-2 text-amber-900 flex items-center jua-font text-2xl">
+                <span class="bg-green-200 text-green-900 rounded-full w-10 h-10 shadow-sm flex items-center justify-center mr-3 text-sm">3</span>
+                개미반 🐜 vs 배짱이반 🎻
             </h2>
             <p class="text-sm text-amber-700 mb-6 font-medium ml-11">* 성향에 맞춘 조 배정용 질문입니다.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
                 <!-- 개미반 -->
-                <div class="bg-white p-5 rounded-xl border border-amber-200 shadow-sm relative overflow-hidden group hover:border-amber-400 transition-colors">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 text-5xl group-hover:scale-110 transition-transform">🐜</div>
+                <div class="ant-card p-6 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 p-2 opacity-15 text-6xl group-hover:scale-125 transition-transform ant-anim">🐜</div>
                     <h3 class="font-bold text-lg mb-3 text-amber-900 flex items-center">
                         <span class="text-2xl mr-2">🐜</span> 개미반 성향
                     </h3>
@@ -266,8 +338,8 @@
                     </ul>
                 </div>
                 <!-- 배짱이반 -->
-                <div class="bg-white p-5 rounded-xl border border-green-200 shadow-sm relative overflow-hidden group hover:border-green-400 transition-colors">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 text-5xl group-hover:scale-110 transition-transform">🕺</div>
+                <div class="grasshopper-card p-6 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 p-2 opacity-15 text-6xl group-hover:scale-125 transition-transform float-anim">🎻</div>
                     <h3 class="font-bold text-lg mb-3 text-green-800 flex items-center">
                         <span class="text-2xl mr-2">🕺</span> 배짱이반 성향
                     </h3>
@@ -288,9 +360,9 @@
 
         <!-- 4. 스터디 참여 관련 -->
         <div class="form-section relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-amber-400"></div>
-            <h2 class="text-xl font-bold mb-6 text-amber-900 flex items-center">
-                <span class="bg-amber-100 text-amber-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">4</span>
+            <div class="marching-ants"></div>
+            <h2 class="text-xl font-bold mb-6 text-amber-900 flex items-center jua-font text-2xl">
+                <span class="bg-amber-200 text-amber-900 rounded-full w-10 h-10 shadow-sm flex items-center justify-center mr-3 text-sm">4</span>
                 스터디 참여 세부사항
             </h2>
             
@@ -427,8 +499,8 @@
 
         <!-- Submit Button -->
         <div class="text-center pb-12 mt-10">
-            <button id="submit-btn" type="submit" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-4 px-14 rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl text-lg flex items-center justify-center mx-auto disabled:opacity-70 disabled:cursor-not-allowed">
-                <span>지원서 제출하기</span>
+            <button id="submit-btn" type="submit" class="jua-font bg-gradient-to-r from-amber-500 to-green-500 hover:from-amber-600 hover:to-green-600 text-white font-bold py-4 px-16 rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl text-2xl flex items-center justify-center mx-auto disabled:opacity-70 disabled:cursor-not-allowed">
+                <span>지원서 제출하기 💌</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
