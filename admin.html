@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개미와 배짱이 - 관리자 페이지</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f3f4f6; }
+        /* Hide Netlify badge aggressively */
+        #netlify-badge, .netlify-badge, a[href*="netlify.com/"] { display: none !important; opacity: 0 !important; pointer-events: none !important; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div class="flex justify-between items-end mb-8 border-b border-gray-200 pb-4">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-900">👩‍🏫 스터디 지원자 관리</h1>
+            <p class="text-gray-500 mt-2">총 지원자: <span id="total-count" class="font-bold text-amber-600">0</span>명</p>
+        </div>
+        <button onclick="fetchApplications()" class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition shadow-sm text-sm font-medium flex items-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+            새로고침
+        </button>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading" class="text-center py-20">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-amber-600 mb-4"></div>
+        <p class="text-gray-500 font-medium">데이터를 불러오는 중입니다...</p>
+    </div>
+
+    <!-- Applications Grid -->
+    <div id="applications-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 hidden">
+        <!-- Cards will be injected here -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="text-center py-20 hidden">
+        <p class="text-gray-500 text-lg">아직 접수된 지원서가 없습니다. 🥲</p>
+    </div>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA6uX26PSzrT8WEtG-DD1-6ndTD6onyR5g",
+      authDomain: "ant-grasshopper.firebaseapp.com",
+      projectId: "ant-grasshopper",
+      storageBucket: "ant-grasshopper.firebasestorage.app",
+      messagingSenderId: "556183075964",
+      appId: "1:556183075964:web:ec339d82b43a83f7369df9"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const container = document.getElementById('applications-container');
+    const loading = document.getElementById('loading');
+    const emptyState = document.getElementById('empty-state');
+    const totalCount = document.getElementById('total-count');
+
+    // Simple password prompt for basic protection
+    const checkAuth = () => {
+        const pwd = sessionStorage.getItem('admin_pwd');
+        if (pwd === 'ant1234') return true;
+        
+        const input = prompt("관리자 비밀번호를 입력해주세요.");
+        if (input === 'ant1234') {
+            sessionStorage.setItem('admin_pwd', 'ant1234');
+            return true;
+        }
+        alert("비밀번호가 틀렸습니다.");
+        document.body.innerHTML = '<div class="text-center mt-20 text-xl font-bold">접근이 거부되었습니다.</div>';
+        return false;
+    };
+
+    window.fetchApplications = async () => {
+        if (!checkAuth()) return;
+
+        loading.classList.remove('hidden');
+        container.classList.add('hidden');
+        emptyState.classList.add('hidden');
+        container.innerHTML = '';
+
+        try {
+            const q = query(collection(db, "applications"), orderBy("submittedAt", "desc"));
+            const querySnapshot = await getDocs(q);
+            
+            totalCount.innerText = querySnapshot.size;
+
+            if (querySnapshot.empty) {
+                emptyState.classList.remove('hidden');
+                loading.classList.add('hidden');
+                return;
+            }
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                
+                // Format Date
+                let dateStr = '날짜 알 수 없음';
+                if (data.submittedAt) {
+                    const date = data.submittedAt.toDate();
+                    dateStr = `${date.getFullYear()}.${String(date.getMonth()+1).padStart(2,'0')}.${String(date.getDate()).padStart(2,'0')} ${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
+                }
+
+                // Create Card
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition";
+                
+                card.innerHTML = `
+                    <div class="bg-amber-50 px-5 py-4 border-b border-amber-100 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-lg text-amber-900">${data.name || '이름 없음'} <span class="text-sm font-normal text-amber-700 ml-1">(${data.gender || '-'}, ${data.age || '-'}세)</span></h3>
+                            <p class="text-xs text-amber-600 mt-1">${dateStr}</p>
+                        </div>
+                        <span class="bg-white border border-amber-200 text-amber-700 text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide">${data.mbti || 'MBTI'}</span>
+                    </div>
+                    <div class="p-5 space-y-4 text-sm text-gray-700">
+                        <div class="grid grid-cols-2 gap-4 bg-gray-50 p-3 rounded-lg">
+                            <div>
+                                <span class="block text-xs text-gray-400 mb-1">학교/전공</span>
+                                <span class="font-medium">${data.school || ''} ${data.major || ''}</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-gray-400 mb-1">학년</span>
+                                <span class="font-medium">${data.grade || ''}</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-gray-400 mb-1">활동 지역</span>
+                                <span class="font-medium">${data.location || ''}</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-gray-400 mb-1">연락처</span>
+                                <span class="font-medium">${data.phone || ''}</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 mb-1 border-b pb-1">희망 요일 및 시간대</span>
+                            <p class="mt-1"><span class="font-medium text-amber-700">${(data.days || []).join(', ') || '선택 안함'}</span> / ${data.time || '선택 안함'}</p>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 mb-1 border-b pb-1">현재 활동 및 목표</span>
+                            <p class="mt-1 mb-1 font-medium text-gray-900">목표: ${data.focus || '선택 안함'}</p>
+                            <p class="text-xs text-gray-600">${(data.activities || []).join(', ')}</p>
+                            ${data.target_exam ? `<p class="mt-1 text-xs text-amber-600 bg-amber-50 p-1.5 rounded inline-block">🎯 시험: ${data.target_exam}</p>` : ''}
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 mb-1 border-b pb-1">성향 (개미 vs 배짱이)</span>
+                            <p class="mt-1 italic text-gray-600">"${data.study_style || ''}"</p>
+                            <p class="mt-2 text-xs bg-gray-100 p-2 rounded">
+                                <span class="font-bold text-gray-700">원하는 채찍질:</span> ${data.punishment || '선택 안함'}
+                            </p>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 mb-1 border-b pb-1">기대하는 점</span>
+                            <div class="flex flex-wrap gap-1 mt-1.5">
+                                ${(data.expectations || []).map(exp => `<span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded border border-gray-200">${exp}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            container.classList.remove('hidden');
+        } catch (error) {
+            console.error("Error fetching applications:", error);
+            alert("데이터를 불러오는데 실패했습니다.");
+        } finally {
+            loading.classList.add('hidden');
+        }
+    };
+
+    // Load data on start
+    document.addEventListener('DOMContentLoaded', window.fetchApplications);
+</script>
+</body>
+</html>
