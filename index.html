@@ -7,8 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        
-        
+        html {
+            scroll-behavior: smooth;
+        }
         @media (min-width: 640px) {
             
         }
@@ -139,11 +140,13 @@
             자격증도 따면서 새로운 사람들 알아가보고 싶은 분들, <br class="hidden sm:block">올해 뭐라도 따봐야겠다 싶은 분들 함께 해요🫶🏻💪🏻
         </p>
 
-        <!-- Gallery Link Button -->
-        <div class="mt-4 flex justify-center">
-            <a href="gallery.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-green-500 hover:from-amber-600 hover:to-green-600 text-white font-bold py-2.5 px-6 rounded-full shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 text-sm sm:text-base jua-font">
-                <span>📸 기수별 활동 사진 구경하기</span>
-                <span class="text-xs bg-white/20 px-2 py-0.5 rounded-full">개미반 & 베짱이반 📸</span>
+        <!-- 사이트 메인 2개 버튼: 신청하기 & 활동 사진 -->
+        <div class="mt-6 flex flex-row items-center justify-center gap-3 sm:gap-4 max-w-sm sm:max-w-md mx-auto">
+            <a href="#application-form" class="flex-1 inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold py-3.5 px-4 sm:px-6 rounded-2xl shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 text-base sm:text-lg jua-font">
+                <span>📝 신청하기</span>
+            </a>
+            <a href="gallery.html" class="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold py-3.5 px-4 sm:px-6 rounded-2xl shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 text-base sm:text-lg jua-font">
+                <span>📸 활동 사진</span>
             </a>
         </div>
     </div>
