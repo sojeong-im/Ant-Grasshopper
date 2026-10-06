@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개미와 배짱이 - 기수별 활동 사진첩 📸</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfaf6;
+            background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M20 20.5V18H0v-2h20v-2.5L35 20z" fill="%23f4ebd8" fill-opacity="0.3" fill-rule="evenodd"/></svg>');
+        }
+        .jua-font {
+            font-family: 'Jua', sans-serif;
+        }
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(8deg); }
+        }
+        .ant-anim {
+            animation: antWalk 0.6s infinite alternate;
+            display: inline-block;
+        }
+        @keyframes antWalk {
+            0% { transform: translateY(0) rotate(-8deg); }
+            100% { transform: translateY(-3px) rotate(8deg); }
+        }
+        .photo-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .photo-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        /* Hide Netlify badge aggressively */
+        #netlify-badge, .netlify-badge, a[href*="netlify.com/"] {
+            display: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-amber-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2 text-amber-900 font-bold text-lg hover:opacity-80 transition">
+                <span class="text-2xl ant-anim">🐜</span>
+                <span class="jua-font text-xl text-amber-900 tracking-tight">개미와 배짱이</span>
+                <span class="text-2xl float-anim">🎻</span>
+            </a>
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="inline-flex items-center text-sm font-semibold text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3.5 py-2 rounded-xl transition shadow-sm">
+                    <span>✍️ 지원서 작성하기</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 w-full">
+        <!-- Hero Header -->
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100/80 border border-amber-200 text-amber-900 text-xs sm:text-sm font-medium mb-4 shadow-sm">
+                <span>📸</span>
+                <span>함께 공부하고 추억을 쌓는 우리들의 기록</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-amber-950 mb-4 jua-font tracking-tight">
+                기수 활동 사진첩
+            </h1>
+            <p class="text-gray-600 text-sm sm:text-base leading-relaxed break-keep">
+                치열하고 계획적으로 달리는 <strong class="text-amber-800">개미반 🐜</strong>과<br class="sm:hidden">
+                유연하고 즐겁게 힐링하며 스터디하는 <strong class="text-green-800">베짱이반 🎻</strong>의 활동 모습입니다!
+            </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex justify-center mb-10">
+            <div class="inline-flex p-1.5 bg-amber-100/60 backdrop-blur-sm rounded-2xl border border-amber-200 shadow-inner gap-1.5">
+                <button onclick="setTab('all')" id="tab-all" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 shadow-sm bg-white text-amber-900">
+                    전체 보기 <span class="ml-1 text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">9</span>
+                </button>
+                <button onclick="setTab('ant')" id="tab-ant" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 text-gray-600 hover:text-amber-800">
+                    <span class="ant-anim mr-1">🐜</span> 개미반 <span class="ml-1 text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-semibold">5</span>
+                </button>
+                <button onclick="setTab('grasshopper')" id="tab-grasshopper" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 text-gray-600 hover:text-green-800">
+                    <span class="float-anim mr-1">🎻</span> 베짱이반 <span class="ml-1 text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-800 font-semibold">4</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Class Intro Cards (Shows context based on selected tab) -->
+        <div id="intro-banner" class="mb-8">
+            <!-- Grasshopper Intro Banner -->
+            <div id="banner-grasshopper" class="bg-gradient-to-r from-emerald-50 to-green-100/70 border border-green-200 rounded-2xl p-5 mb-4 flex flex-col sm:flex-row items-center justify-between shadow-sm">
+                <div class="flex items-center space-x-4 mb-3 sm:mb-0">
+                    <div class="w-12 h-12 rounded-2xl bg-green-500/10 border border-green-300 flex items-center justify-center text-2xl flex-shrink-0 float-anim">
+                        🎻
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold text-green-900 jua-font">베짱이반 (Grasshopper Class)</h3>
+                        <p class="text-xs sm:text-sm text-green-700 mt-0.5">"계획은 유연하게, 지치지 않고 즐겁게 완주하자!" 맛있는 카공과 든든한 식사 번개 🌿</p>
+                    </div>
+                </div>
+                <span class="text-xs bg-white text-green-800 font-semibold px-3 py-1.5 rounded-full border border-green-200 shadow-2xs whitespace-nowrap">
+                    활동 사진 4장
+                </span>
+            </div>
+
+            <!-- Ant Intro Banner -->
+            <div id="banner-ant" class="bg-gradient-to-r from-amber-50 to-orange-100/70 border border-amber-200 rounded-2xl p-5 mb-4 flex flex-col sm:flex-row items-center justify-between shadow-sm">
+                <div class="flex items-center space-x-4 mb-3 sm:mb-0">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-300 flex items-center justify-center text-2xl flex-shrink-0 ant-anim">
+                        🐜
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold text-amber-900 jua-font">개미반 (Ant Class)</h3>
+                        <p class="text-xs sm:text-sm text-amber-800 mt-0.5">"촘촘한 계획표와 집중 모드로 자격증 취득 정복!" 열정 가득 갓생 루틴 스터디 🔥</p>
+                    </div>
+                </div>
+                <span class="text-xs bg-white text-amber-800 font-semibold px-3 py-1.5 rounded-full border border-amber-200 shadow-2xs whitespace-nowrap">
+                    활동 사진 5장
+                </span>
+            </div>
+        </div>
+
+        <!-- Photo Grid Container -->
+        <div id="photos-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- ==================== 개미반 사진 (5장) ==================== -->
+            <!-- Ant Photo 1 -->
+            <div class="photo-item photo-card bg-white rounded-2xl overflow-hidden border border-amber-200 shadow-sm flex flex-col cursor-pointer group" data-category="ant" onclick="openLightbox(0)">
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                    <img src="images/ant/ant_1.jpg" alt="개미반 노트북 집중 스터디" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white/90 text-gray-800 rounded-full px-3 py-1.5 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            🔍 크게 보기
+                        </span>
+                    </div>
+                    <span class="absolute top-3 left-3 bg-amber-600/95 text-white text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-xs shadow-sm">
+                        🐜 개미반
+                    </span>
+                </div>
+                <div class="p-4 flex flex-col flex-grow bg-[#fffdfa]">
+                    <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                        <span class="text-amber-800 font-medium">합동 카공 스터디</span>
+                        <span>1기 모임</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1 group-hover:text-amber-800 transition">노트북 & 태블릿 집중 모드 💻</h4>
+                    <p class="text-xs text-gray-600 line-clamp-2">음료 한 잔 두고 다 같이 모여 불태운 집중 스터디 현장! 각자 목표 분량 클리어 ✨</p>
+                </div>
+            </div>
+
+            <!-- Ant Photo 2 -->
+            <div class="photo-item photo-card bg-white rounded-2xl overflow-hidden border border-amber-200 shadow-sm flex flex-col cursor-pointer group" data-category="ant" onclick="openLightbox(1)">
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                    <img src="images/ant/ant_2.jpg" alt="개미반 대형 카페 단체 열공 번개" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white/90 text-gray-800 rounded-full px-3 py-1.5 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            🔍 크게 보기
+                        </span>
+                    </div>
+                    <span class="absolute top-3 left-3 bg-amber-600/95 text-white text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-xs shadow-sm">
+                        🐜 개미반
+                    </span>
+                </div>
+                <div class="p-4 flex flex-col flex-grow bg-[#fffdfa]">
+                    <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                        <span class="text-amber-800 font-medium">개미반 단체 모임</span>
+                        <span>1기 모임</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1 group-hover:text-amber-800 transition">대형 카페 단체 열공 번개 ⚡️</h4>
+                    <p class="text-xs text-gray-600 line-clamp-2">여럿이 모여 공부하니 동기부여 200%! 다 함께 화이팅하며 자격증 열공 📝</p>
+                </div>
+            </div>
+
+            <!-- Ant Photo 3 -->
+            <div class="photo-item photo-card bg-white rounded-2xl overflow-hidden border border-amber-200 shadow-sm flex flex-col cursor-pointer group" data-category="ant" onclick="openLightbox(2)">
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                    <img src="images/ant/ant_3.jpg" alt="개미반 외국어 원서 및 필기 분석" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white/90 text-gray-800 rounded-full px-3 py-1.5 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            🔍 크게 보기
+                        </span>
+                    </div>
+                    <span class="absolute top-3 left-3 bg-amber-600/95 text-white text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-xs shadow-sm">
+                        🐜 개미반
+                    </span>
+                </div>
+                <div class="p-4 flex flex-col flex-grow bg-[#fffdfa]">
+                    <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                        <span class="text-amber-800 font-medium">원서 강독 & 자료 분석</span>
+                        <span>1기 모임</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1 group-hover:text-amber-800 transition">외국어 & 자격증 필기 분석 📖</h4>
+                    <p class="text-xs text-gray-600 line-clamp-2">노트북과 스타일러스 펜으로 꼼꼼하게 정리하고 파고드는 개미반의 갓생 모먼트 🔍</p>
+                </div>
+            </div>
+
+            <!-- Ant Photo 4 -->
+            <div class="photo-item photo-card bg-white rounded-2xl overflow-hidden border border-amber-200 shadow-sm flex flex-col cursor-pointer group" data-category="ant" onclick="openLightbox(3)">
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                    <img src="images/ant/ant_4.jpg" alt="개미반 원형 테이블 초집중 스터디" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white/90 text-gray-800 rounded-full px-3 py-1.5 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            🔍 크게 보기
+                        </span>
+                    </div>
+                    <span class="absolute top-3 left-3 bg-amber-600/95 text-white text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-xs shadow-sm">
+                        🐜 개미반
+                    </span>
+                </div>
+                <div class="p-4 flex flex-col flex-grow bg-[#fffdfa]">
+                    <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                        <span class="text-amber-800 font-medium">열공 포즈 & V 인증</span>
+                        <span>1기 모임</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1 group-hover:text-amber-800 transition">원형 테이블 초집중 스터디 🎯</h4>
+                    <p class="text-xs text-gray-600 line-clamp-2">모두 둘러앉아 집중력 풀가동! 서로에게 든든한 페이스메이커가 되어준 날 ✌️</p>
+                </div>
+            </div>
+
+            <!-- Ant Photo 5 -->
+            <div class="photo-item photo-card bg-white rounded-2xl overflow-hidden border border-amber-200 shadow-sm flex flex-col cursor-pointer group" data-category="ant" onclick="openLightbox(4)">
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                    <img src="images/ant/ant_5.jpg" alt="개미반 프로젝트 및 실습 몰입 작업" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white/90 text-gray-800 rounded-full px-3 py-1.5 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            🔍 크게 보기
+                        </span>
+                    </div>
+                    <span class="absolute top-3 left-3 bg-amber-600/95 text-white text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-xs shadow-sm">
+                        🐜 개미반
+                    </span>
+                </div>
+                <div class="p-4 flex flex-col flex-grow bg-[#fffdfa]">
+                    <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                        <span class="text-amber-800 font-medium">작업 & 포트폴리오</span>
+                        <span>1기 모임</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1 group-hover:text-amber-800 transition">프로젝트 & 실습 몰입 작업 💻</h4>
+                    <p class="text-xs text-gray-600 line-clamp-2">화면 가득 채운 작업창과 필기! 계획대로 차근차근 끝마치는 성취감 💯</p>
+                </div>
+            </div>
+
+            <!-- ==================== 베짱이반 사진 (4장) ==================== -->
+            <!-- Grasshopper Photo 1 -->
+            <div class="photo-item photo-card bg-white rounded-2xl overflow-hidden border border-green-200 shadow-sm flex flex-col cursor-pointer group" data-category="grasshopper" onclick="openLightbox(5)">
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                    <img src="images/grasshopper/grasshopper_1.jpg" alt="베짱이반 카공 모임" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white/90 text-gray-800 rounded-full px-3 py-1.5 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            🔍 크게 보기
+                        </span>
+                    </div>
+                    <span class="absolute top-3 left-3 bg-emerald-600/95 text-white text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-xs shadow-sm">
+                        🎻 베짱이반
+                    </span>
+                </div>
+                <div class="p-4 flex flex-col flex-grow bg-[#fcfdfc]">
+                    <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                        <span class="text-emerald-700 font-medium">베이커리 카페 카공</span>
+                        <span>1기 모임</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1 group-hover:text-emerald-700 transition">소금빵 & 커피와 함께한 카공</h4>
+                    <p class="text-xs text-gray-600 line-clamp-2">키보드 두드리며 각자 할 일도 하고 달콤한 빵 먹으며 힐링한 스터디 타임 🥐☕️</p>
+                </div>
+            </div>
+
+            <!-- Grasshopper Photo 2 -->
+            <div class="photo-item photo-card bg-white rounded-2xl overflow-hidden border border-green-200 shadow-sm flex flex-col cursor-pointer group" data-category="grasshopper" onclick="openLightbox(6)">
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                    <img src="images/grasshopper/grasshopper_2.jpg" alt="베짱이반 카페 디저트 타임" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white/90 text-gray-800 rounded-full px-3 py-1.5 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            🔍 크게 보기
+                        </span>
+                    </div>
+                    <span class="absolute top-3 left-3 bg-emerald-600/95 text-white text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-xs shadow-sm">
+                        🎻 베짱이반
+                    </span>
+                </div>
+                <div class="p-4 flex flex-col flex-grow bg-[#fcfdfc]">
+                    <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                        <span class="text-emerald-700 font-medium">카페 스터디 & 디저트</span>
+                        <span>1기 모임</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1 group-hover:text-emerald-700 transition">케이크 & 샌드위치 충전 🍰</h4>
+                    <p class="text-xs text-gray-600 line-clamp-2">아이스 아메리카노와 달콤한 디저트로 당 충전하며 수다와 공부를 동시에!</p>
+                </div>
+            </div>
+
+            <!-- Grasshopper Photo 3 -->
+            <div class="photo-item photo-card bg-white rounded-2xl overflow-hidden border border-green-200 shadow-sm flex flex-col cursor-pointer group" data-category="grasshopper" onclick="openLightbox(7)">
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                    <img src="images/grasshopper/grasshopper_3.jpg" alt="베짱이반 멕시칸 푸드 회식" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white/90 text-gray-800 rounded-full px-3 py-1.5 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            🔍 크게 보기
+                        </span>
+                    </div>
+                    <span class="absolute top-3 left-3 bg-emerald-600/95 text-white text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-xs shadow-sm">
+                        🎻 베짱이반
+                    </span>
+                </div>
+                <div class="p-4 flex flex-col flex-grow bg-[#fcfdfc]">
+                    <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                        <span class="text-emerald-700 font-medium">스터디 뒷풀이 번개</span>
+                        <span>1기 모임</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1 group-hover:text-emerald-700 transition">부리또 & 치킨 윙 파티 🌮🍗</h4>
+                    <p class="text-xs text-gray-600 line-clamp-2">열심히 공부한 뒤 다 같이 맛있는 멕시칸 요리와 치킨 윙 먹으며 친목 다지기!</p>
+                </div>
+            </div>
+
+            <!-- Grasshopper Photo 4 -->
+            <div class="photo-item photo-card bg-white rounded-2xl overflow-hidden border border-green-200 shadow-sm flex flex-col cursor-pointer group" data-category="grasshopper" onclick="openLightbox(8)">
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                    <img src="images/grasshopper/grasshopper_4.jpg" alt="베짱이반 함박스테이크 맛집" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white/90 text-gray-800 rounded-full px-3 py-1.5 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            🔍 크게 보기
+                        </span>
+                    </div>
+                    <span class="absolute top-3 left-3 bg-emerald-600/95 text-white text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-xs shadow-sm">
+                        🎻 베짱이반
+                    </span>
+                </div>
+                <div class="p-4 flex flex-col flex-grow bg-[#fcfdfc]">
+                    <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                        <span class="text-emerald-700 font-medium">든든한 점심 식사</span>
+                        <span>1기 모임</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1 group-hover:text-emerald-700 transition">함박스테이크 맛집 모임 🍽️</h4>
+                    <p class="text-xs text-gray-600 line-clamp-2">금강산도 식후경! 맛있는 함박스테이크 함께 먹으며 도란도란 이야기 나눈 하루 ✨</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Banner / CTA -->
+        <div class="mt-16 bg-gradient-to-r from-amber-500 via-orange-400 to-green-500 rounded-3xl p-8 text-white text-center shadow-lg relative overflow-hidden">
+            <div class="relative z-10 max-w-xl mx-auto">
+                <h3 class="text-2xl sm:text-3xl font-extrabold jua-font mb-3">함께 공부하고 싶다면 지금 지원하세요!</h3>
+                <p class="text-amber-50 text-sm sm:text-base mb-6 leading-relaxed">
+                    자격증도 따고 좋은 스터디원들과 의미 있는 방학과 학기를 보내보세요.<br class="hidden sm:inline">
+                    개미반과 베짱이반 중 내 성향에 딱 맞는 조로 배정됩니다!
+                </p>
+                <a href="index.html" class="inline-flex items-center px-8 py-3.5 bg-white text-amber-900 hover:text-amber-950 font-bold text-base rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 jua-font">
+                    <span>지원서 작성하러 가기 💌</span>
+                </a>
+            </div>
+            <!-- Decorative circle backgrounds -->
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/60 border-t border-amber-100 py-6 mt-12 text-center text-xs text-gray-500">
+        <p>© 개미와 배짱이 자격증 스터디 · 서울 20대 대학생 / 대학원생</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeLightbox(event)">
+        <div class="relative max-w-4xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
+            <!-- Close button -->
+            <button onclick="closeLightbox()" class="absolute -top-12 right-0 sm:right-2 text-white/80 hover:text-white text-3xl font-bold p-2 transition">
+                ✕
+            </button>
+            
+            <!-- Main Image -->
+            <div class="relative w-full flex items-center justify-center max-h-[75vh]">
+                <img id="lightbox-img" src="" alt="" class="max-h-[75vh] max-w-full rounded-2xl object-contain shadow-2xl border-2 border-white/20">
+                
+                <!-- Prev / Next buttons -->
+                <button onclick="prevPhoto()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full w-11 h-11 flex items-center justify-center text-xl transition">
+                    ‹
+                </button>
+                <button onclick="nextPhoto()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full w-11 h-11 flex items-center justify-center text-xl transition">
+                    ›
+                </button>
+            </div>
+
+            <!-- Caption -->
+            <div class="mt-4 text-center text-white px-4">
+                <div class="inline-block text-white text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2" id="lightbox-tag">
+                    🐜 개미반
+                </div>
+                <h3 id="lightbox-title" class="text-lg font-bold"></h3>
+                <p id="lightbox-desc" class="text-sm text-gray-300 mt-1 max-w-md mx-auto"></p>
+                <span id="lightbox-counter" class="text-xs text-gray-400 mt-2 block">1 / 9</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Photo data structure (Ant: 0~4, Grasshopper: 5~8)
+        const photos = [
+            // 개미반
+            {
+                src: "images/ant/ant_1.jpg",
+                title: "노트북 & 태블릿 집중 모드 💻",
+                desc: "음료 한 잔 두고 다 같이 모여 불태운 집중 스터디 현장! 각자 목표 분량 클리어 ✨",
+                tag: "🐜 개미반 · 합동 카공 스터디",
+                category: "ant"
+            },
+            {
+                src: "images/ant/ant_2.jpg",
+                title: "대형 카페 단체 열공 번개 ⚡️",
+                desc: "여럿이 모여 공부하니 동기부여 200%! 다 함께 화이팅하며 자격증 열공 📝",
+                tag: "🐜 개미반 · 단체 모임",
+                category: "ant"
+            },
+            {
+                src: "images/ant/ant_3.jpg",
+                title: "외국어 & 자격증 필기 분석 📖",
+                desc: "노트북과 스타일러스 펜으로 꼼꼼하게 정리하고 파고드는 개미반의 갓생 모먼트 🔍",
+                tag: "🐜 개미반 · 자료 분석",
+                category: "ant"
+            },
+            {
+                src: "images/ant/ant_4.jpg",
+                title: "원형 테이블 초집중 스터디 🎯",
+                desc: "모두 둘러앉아 집중력 풀가동! 서로에게 든든한 페이스메이커가 되어준 날 ✌️",
+                tag: "🐜 개미반 · 집중 스터디",
+                category: "ant"
+            },
+            {
+                src: "images/ant/ant_5.jpg",
+                title: "프로젝트 & 실습 몰입 작업 💻",
+                desc: "화면 가득 채운 작업창과 필기! 계획대로 차근차근 끝마치는 성취감 💯",
+                tag: "🐜 개미반 · 작업 & 포트폴리오",
+                category: "ant"
+            },
+            // 베짱이반
+            {
+                src: "images/grasshopper/grasshopper_1.jpg",
+                title: "소금빵 & 커피와 함께한 카공",
+                desc: "키보드 두드리며 각자 할 일도 하고 달콤한 빵 먹으며 힐링한 스터디 타임 🥐☕️",
+                tag: "🎻 베짱이반 · 카공 모임",
+                category: "grasshopper"
+            },
+            {
+                src: "images/grasshopper/grasshopper_2.jpg",
+                title: "케이크 & 샌드위치 충전 🍰",
+                desc: "아이스 아메리카노와 달콤한 디저트로 당 충전하며 수다와 공부를 동시에!",
+                tag: "🎻 베짱이반 · 카페 스터디",
+                category: "grasshopper"
+            },
+            {
+                src: "images/grasshopper/grasshopper_3.jpg",
+                title: "부리또 & 치킨 윙 파티 🌮🍗",
+                desc: "열심히 공부한 뒤 다 같이 맛있는 멕시칸 요리와 치킨 윙 먹으며 친목 다지기!",
+                tag: "🎻 베짱이반 · 뒷풀이 번개",
+                category: "grasshopper"
+            },
+            {
+                src: "images/grasshopper/grasshopper_4.jpg",
+                title: "함박스테이크 맛집 모임 🍽️",
+                desc: "금강산도 식후경! 맛있는 함박스테이크 함께 먹으며 도란도란 이야기 나눈 하루 ✨",
+                tag: "🎻 베짱이반 · 식사 모임",
+                category: "grasshopper"
+            }
+        ];
+
+        let currentActiveCategory = 'all';
+        let activePhotoIndices = photos.map((_, i) => i);
+        let currentPhotoIndex = 0;
+
+        // Tab Switching Logic
+        function setTab(category) {
+            currentActiveCategory = category;
+            const tabAll = document.getElementById('tab-all');
+            const tabAnt = document.getElementById('tab-ant');
+            const tabGrasshopper = document.getElementById('tab-grasshopper');
+            
+            const bannerAnt = document.getElementById('banner-ant');
+            const bannerGrasshopper = document.getElementById('banner-grasshopper');
+
+            // Reset tab styles
+            [tabAll, tabAnt, tabGrasshopper].forEach(btn => {
+                btn.className = "tab-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 text-gray-600 hover:text-amber-900";
+            });
+
+            const photoCards = document.querySelectorAll('.photo-item');
+
+            if (category === 'all') {
+                tabAll.className = "tab-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 shadow-sm bg-white text-amber-900";
+                bannerAnt.classList.remove('hidden');
+                bannerGrasshopper.classList.remove('hidden');
+
+                photoCards.forEach(card => card.classList.remove('hidden'));
+                activePhotoIndices = photos.map((_, i) => i);
+
+            } else if (category === 'ant') {
+                tabAnt.className = "tab-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 shadow-sm bg-white text-amber-900";
+                bannerAnt.classList.remove('hidden');
+                bannerGrasshopper.classList.add('hidden');
+
+                activePhotoIndices = [];
+                photoCards.forEach((card, idx) => {
+                    if (card.getAttribute('data-category') === 'ant') {
+                        card.classList.remove('hidden');
+                        activePhotoIndices.push(idx);
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+            } else if (category === 'grasshopper') {
+                tabGrasshopper.className = "tab-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 shadow-sm bg-white text-green-800";
+                bannerAnt.classList.add('hidden');
+                bannerGrasshopper.classList.remove('hidden');
+
+                activePhotoIndices = [];
+                photoCards.forEach((card, idx) => {
+                    if (card.getAttribute('data-category') === 'grasshopper') {
+                        card.classList.remove('hidden');
+                        activePhotoIndices.push(idx);
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+        }
+
+        // Lightbox Functions
+        function openLightbox(index) {
+            currentPhotoIndex = index;
+            updateLightboxContent();
+            document.getElementById('lightbox').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateLightboxContent() {
+            const photo = photos[currentPhotoIndex];
+            if (!photo) return;
+            document.getElementById('lightbox-img').src = photo.src;
+            document.getElementById('lightbox-title').innerText = photo.title;
+            document.getElementById('lightbox-desc').innerText = photo.desc;
+            
+            const tagElem = document.getElementById('lightbox-tag');
+            tagElem.innerText = photo.tag;
+            if (photo.category === 'ant') {
+                tagElem.className = "inline-block bg-amber-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2";
+            } else {
+                tagElem.className = "inline-block bg-emerald-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2";
+            }
+
+            // Find position in active indices
+            const currentPos = activePhotoIndices.indexOf(currentPhotoIndex);
+            if (currentPos !== -1) {
+                document.getElementById('lightbox-counter').innerText = `${currentPos + 1} / ${activePhotoIndices.length}`;
+            } else {
+                document.getElementById('lightbox-counter').innerText = `${currentPhotoIndex + 1} / ${photos.length}`;
+            }
+        }
+
+        function prevPhoto() {
+            if (activePhotoIndices.length === 0) return;
+            let currentPos = activePhotoIndices.indexOf(currentPhotoIndex);
+            if (currentPos === -1) currentPos = 0;
+            const prevPos = (currentPos - 1 + activePhotoIndices.length) % activePhotoIndices.length;
+            currentPhotoIndex = activePhotoIndices[prevPos];
+            updateLightboxContent();
+        }
+
+        function nextPhoto() {
+            if (activePhotoIndices.length === 0) return;
+            let currentPos = activePhotoIndices.indexOf(currentPhotoIndex);
+            if (currentPos === -1) currentPos = 0;
+            const nextPos = (currentPos + 1) % activePhotoIndices.length;
+            currentPhotoIndex = activePhotoIndices[nextPos];
+            updateLightboxContent();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('hidden')) return;
+
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') prevPhoto();
+            if (e.key === 'ArrowRight') nextPhoto();
+        });
+    </script>
+</body>
+</html>
